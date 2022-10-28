@@ -9,6 +9,10 @@ class cityAPI{
     addCity = (requestBody)=> {
         return this.api.post(`api/cities`, requestBody) 
     }
+
+    addRestaurant = (requestBody)=>{
+        return this.api.post(`api/restaurants`, requestBody)
+    }
 }
 
 export default new cityAPI()

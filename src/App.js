@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import AddCity from './pages/AddCity';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './LoginPage';
+import AddRestaurant from './pages/AddRestaurant';
 
 const API_URL = "http://localhost:5005";
 
@@ -34,6 +35,7 @@ function App() {
       <Route path='/' element={<HomePage/>}/> 
       <Route path='/cities' element={<ListOfCities listOfCities={cities}/>}/> 
       <Route path='/cities/create' element={<AddCity listOfCities={cities} cbToGetCities={getAllCities}/>}/> 
+      <Route path='/restaurants/create' element={<AddRestaurant/>}/> 
       <Route path='/signup' element={<SignupPage/>}/> 
       <Route path='/login' element={<LoginPage/>}/> 
       </Routes>
