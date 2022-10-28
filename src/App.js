@@ -10,6 +10,7 @@ import AddCity from './pages/AddCity';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './LoginPage';
 import AddRestaurant from './pages/AddRestaurant';
+import SeeRestaurants from './pages/SeeRestaurants';
 
 const API_URL = "http://localhost:5005";
 
@@ -36,6 +37,7 @@ function App() {
       <Route path='/cities' element={<ListOfCities listOfCities={cities}/>}/> 
       <Route path='/cities/create' element={<AddCity listOfCities={cities} cbToGetCities={getAllCities}/>}/> 
       <Route path='/restaurants/create' element={<AddRestaurant/>}/> 
+      <Route path='/cities/:cityId' element={<SeeRestaurants listOfCities={cities}/>}/> 
       <Route path='/signup' element={<SignupPage/>}/> 
       <Route path='/login' element={<LoginPage/>}/> 
       </Routes>
