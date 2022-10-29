@@ -3,10 +3,13 @@ import axios from "axios";
 import cityAPI from '../utils/apiConnect'
 import { useNavigate } from "react-router-dom";
 import ListOfCities from "./ListOfCities";
+import Cuisines from "../cuisines.json"
 
 const API_URL = "http://localhost:5005";
 
 export default function AddRestaurant(props) {
+
+    const[cuisinesArray] = useState(Cuisines)
 
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
@@ -16,7 +19,8 @@ export default function AddRestaurant(props) {
     const [cityId, setCityId] = useState('')
     const navigate = useNavigate();
 
-console.log(props)
+    console.log(props)
+    console.log(cuisinesArray)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -34,7 +38,6 @@ console.log(props)
             .catch((err) => { console.log(err) })
     }
 
-
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -45,13 +48,13 @@ console.log(props)
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
-                 <label>City</label>
+                <label>City</label>
                 <select defaultValue="Select" name="city" onChange={(e) => setCityId(e.target.value)}>
-                {props.listOfCities.map((city)=>{
-                    return(
-                        <option key={city._id} value={city._id}>{city.cityName}</option>
-                    )
-                })}
+                    {props.listOfCities.map((city) => {
+                        return (
+                            <option key={city._id} value={city._id}>{city.cityName}</option>
+                        )
+                    })}
                 </select>
 
                 <label>Address</label>
@@ -69,13 +72,24 @@ console.log(props)
                     value={rating}
                     onChange={(e) => setRating(e.target.value)}
                 />
-                <label>Cuisine</label>
+
+                {/* <label>Cuisine</label>
                 <input
                     type="text"
                     name="cuisine"
                     value={cuisine}
                     onChange={(e) => setCuisine(e.target.value)}
-                />
+                /> */}
+
+                <label>Cuisine2</label>
+                <select defaultValue="Select" name="cuisine" onChange={(e) => setCuisine(e.target.value)}>
+                    {cuisinesArray.map((each) => {
+                        return (
+                            <option>{each}</option>
+                        )
+                    })}
+                </select>
+
                 <label>Price</label>
                 <input
                     type="text"
