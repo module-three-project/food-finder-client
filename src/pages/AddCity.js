@@ -28,6 +28,8 @@ export default function AddCity(props) {
             .catch((error) => { console.log(error) })
     };
 
+    console.log(props)
+
 
     return (
         <div>

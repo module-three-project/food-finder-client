@@ -36,8 +36,8 @@ function App() {
       <Route path='/' element={<HomePage/>}/> 
       <Route path='/cities' element={<ListOfCities listOfCities={cities}/>}/> 
       <Route path='/cities/create' element={<AddCity listOfCities={cities} cbToGetCities={getAllCities}/>}/> 
-      <Route path='/restaurants/create' element={<AddRestaurant/>}/> 
-      <Route path='/cities/:cityId' element={<SeeRestaurants listOfCities={cities}/>}/> 
+      <Route path='/restaurants/create' element={<AddRestaurant listOfCities={cities}/>}/> 
+      <Route path='/cities/:cityId' element={<SeeRestaurants/>}/> 
       <Route path='/signup' element={<SignupPage/>}/> 
       <Route path='/login' element={<LoginPage/>}/> 
       </Routes>

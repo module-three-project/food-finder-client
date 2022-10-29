@@ -2,22 +2,26 @@ import { useState } from "react";
 import axios from "axios";
 import cityAPI from '../utils/apiConnect'
 import { useNavigate } from "react-router-dom";
+import ListOfCities from "./ListOfCities";
 
 const API_URL = "http://localhost:5005";
 
-export default function AddRestaurant() {
+export default function AddRestaurant(props) {
 
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
     const [rating, setRating] = useState('')
     const [cuisine, setCuisine] = useState('')
     const [price, setPrice] = useState('')
+    const [cityId, setCityId] = useState('')
     const navigate = useNavigate();
+
+console.log(props)
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const requestBody = { name, address, rating, cuisine, price };
+        const requestBody = { name, address, rating, cuisine, price, cityId };
         cityAPI.addRestaurant(requestBody)
             .then((response) => {
                 setName("")
@@ -41,6 +45,14 @@ export default function AddRestaurant() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
+                 <label>City</label>
+                <select defaultValue="Select" name="city" onChange={(e) => setCityId(e.target.value)}>
+                {props.listOfCities.map((city)=>{
+                    return(
+                        <option key={city._id} value={city._id}>{city.cityName}</option>
+                    )
+                })}
+                </select>
 
                 <label>Address</label>
                 <input
