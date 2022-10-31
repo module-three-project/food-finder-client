@@ -13,6 +13,7 @@ import AddRestaurant from './pages/AddRestaurant';
 import SeeRestaurants from './pages/SeeRestaurants';
 import ProfilePage from './pages/ProfilePage'
 import ViewRestaurant from './pages/ViewRestaurant';
+import UpdateRestaurant from './pages/UpdateRestaurant';
 
 const API_URL = "http://localhost:5005";
 
@@ -44,6 +45,7 @@ function App() {
       <Route path='/login' element={<LoginPage/>}/>
       <Route path='/profile/' element={<ProfilePage/>}/> 
       <Route path='/restaurants/:restaurantId' element={<ViewRestaurant/>}/>
+      <Route path='/restaurants/update/:restaurantId' element={<UpdateRestaurant listOfCities={cities}/>}/> 
       </Routes>
     </div>
   );

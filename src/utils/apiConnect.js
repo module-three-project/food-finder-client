@@ -21,6 +21,11 @@ class cityAPI{
     deleteRestaurant = (id)=>{
         return this.api.delete(`api/restaurants/${id}`, header )
     }
+
+    updateRestaurant = (requestBody,id)=>{
+        return this.api.put(`api/restaurants/update/${id}`, requestBody, header )
+    }
+    
 }
 
 export default new cityAPI()

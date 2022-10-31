@@ -1,4 +1,4 @@
-import {Navigate, useNavigate, useParams} from "react-router-dom"
+import {Link, Navigate, useNavigate, useParams} from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import api from "../utils/apiConnect"
@@ -16,6 +16,7 @@ export default function ViewRestaurant () {
     const [isLoading, setLoading] = useState(true)
 
     const storedToken = localStorage.getItem("authToken")
+    
 
 
     
@@ -55,7 +56,9 @@ export default function ViewRestaurant () {
             <h1>{restaurantDetails.cuisine}</h1>
             <h1>{restaurantDetails.price}</h1>
             
+           <Link to={`/restaurants/update/${restaurantDetails._id}`}>
             <button>Update</button>
+           </Link>
 
 
             <button onClick={deleteRestaurant}>Delete</button>
