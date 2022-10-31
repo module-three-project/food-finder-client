@@ -17,28 +17,13 @@ export default function UpdateRestaurant(props) {
 
   const storedToken = localStorage.getItem("authToken");
 
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [rating, setRating] = useState("");
-  const [cuisine, setCuisine] = useState("");
-  const [price, setPrice] = useState("");
-  const [cityId, setCityId] = useState("");
+
   const navigate = useNavigate();
 
-  const deleteRestaurant = () => {
-    // axios
-    // .delete(`${API_URL}/api/restaurants/${restaurantId}`,  { headers: { Authorization: `Bearer ${storedToken}` } })
-    api
-      .deleteRestaurant(restaurantId)
-      .then(() => {
-        navigate("/city/");
-      })
-      .catch((error) => console.log(error));
-  };
 
   const updateRestaurant = () => {
     axios
-      .get(`${API_URL}/api/restaurants/update/${restaurantId}`)
+      .get(`${API_URL}/api/restaurants/${restaurantId}`)
       .then((response) => {
         console.log("response:", response);
         const restaurant = response.data;
@@ -48,13 +33,19 @@ export default function UpdateRestaurant(props) {
       .catch((error) => console.log(error));
   };
 
-  console.log(restaurantDetails)
+  const [name, setName] = useState(restaurantDetails.name);
+  const [address, setAddress] = useState(restaurantDetails.address);
+  const [rating, setRating] = useState("");
+  const [cuisine, setCuisine] = useState("");
+  const [price, setPrice] = useState("");
+  const [cityId, setCityId] = useState("");
+
 
   useEffect(() => {
     updateRestaurant();
   }, []);
 
-  console.log(restaurantDetails);
+  console.log('resto details:', restaurantDetails);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,7 +53,7 @@ export default function UpdateRestaurant(props) {
 
     api.updateRestaurant(restaurantId)
     .then(() =>{
-        navigate(`/restaurants/${restaurantId}`)
+        navigate(`/`)
     })
     .catch((error) => console.log(error));
   };

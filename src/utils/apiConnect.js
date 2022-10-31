@@ -23,7 +23,7 @@ class cityAPI{
     }
 
     updateRestaurant = (requestBody,id)=>{
-        return this.api.put(`api/restaurants/update/${id}`, requestBody, header )
+        return this.api.put(`api/restaurants/${id}`, requestBody, header )
     }
     
 }
