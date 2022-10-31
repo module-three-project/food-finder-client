@@ -1,4 +1,7 @@
 import axios from "axios";
+import {AuthContext} from "../context/auth.context"
+const storedToken = localStorage.getItem("authToken")
+
 
 class cityAPI{
     constructor(){
@@ -7,7 +10,7 @@ class cityAPI{
         })
     }
     addCity = (requestBody)=> {
-        return this.api.post(`api/cities`, requestBody) 
+        return this.api.post(`api/cities`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } }) 
     }
 
     addRestaurant = (requestBody)=>{

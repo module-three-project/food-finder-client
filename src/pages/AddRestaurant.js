@@ -84,6 +84,7 @@ export default function AddRestaurant(props) {
                 <label>Cuisine2</label>
                 <select defaultValue="Select" name="cuisine" onChange={(e) => setCuisine(e.target.value)}>
                     {cuisinesArray.map((each) => {
+                        console.log(each)
                         return (
                             <option>{each}</option>
                         )
