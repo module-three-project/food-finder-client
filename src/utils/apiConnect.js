@@ -22,8 +22,8 @@ class cityAPI{
         return this.api.delete(`api/restaurants/${id}`, header )
     }
 
-    updateRestaurant = (requestBody,id)=>{
-        return this.api.put(`api/restaurants/${id}`, requestBody, header )
+    updateRestaurant = (requestBody, restaurantId)=>{
+        return this.api.put(`api/restaurants/${restaurantId}`, requestBody, header )
     }
     
 }

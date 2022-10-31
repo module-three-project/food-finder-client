@@ -13,25 +13,7 @@ export default function UpdateRestaurant(props) {
 
   const [restaurantDetails, setRestaurantDetails] = useState({});
 
-  const [isLoading, setLoading] = useState(true);
-
-  const storedToken = localStorage.getItem("authToken");
-
-
   const navigate = useNavigate();
-
-
-  const updateRestaurant = () => {
-    axios
-      .get(`${API_URL}/api/restaurants/${restaurantId}`)
-      .then((response) => {
-        console.log("response:", response);
-        const restaurant = response.data;
-        setRestaurantDetails(restaurant);
-        setLoading(false);
-      })
-      .catch((error) => console.log(error));
-  };
 
   const [name, setName] = useState(restaurantDetails.name);
   const [address, setAddress] = useState(restaurantDetails.address);
@@ -39,19 +21,51 @@ export default function UpdateRestaurant(props) {
   const [cuisine, setCuisine] = useState("");
   const [price, setPrice] = useState("");
   const [cityId, setCityId] = useState("");
+  const [isLoading, setLoading] = useState(true);
+  const storedToken = localStorage.getItem("authToken");
 
+  useEffect(() => {                                  // <== ADD
+    axios
+      .get(`${API_URL}/api/restaurants/${restaurantId}`)
+      .then((response) => {
+        /* 
+          We update the state with the project data coming from the response.
+          This way we set inputs to show the actual title and description of the project
+        */
+        const oneResto = response.data;
+        setName(oneResto.name);
+        setRating(oneResto.rating);
+        setCuisine(oneResto.cuisine);
+        setPrice(oneResto.price);
+        setAddress(oneResto.address);
+        setCityId(oneResto.city);
+      })
+      .catch((error) => console.log(error));
+    
+  }, [restaurantId]);
+  
+//function to get the resto from the DB 
+  // const updateRestaurant = () => {
+  //   axios
+  //     .get(`${API_URL}/api/restaurants/${restaurantId}`)
+  //     .then((response) => {
+  //       console.log("response:", response);
+  //       const restaurant = response.data;
+  //       setRestaurantDetails(restaurant);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
-  useEffect(() => {
-    updateRestaurant();
-  }, []);
 
   console.log('resto details:', restaurantDetails);
 
+  //function to handle the submit 
   const handleSubmit = (e) => {
     e.preventDefault();
     const requestBody = { name, cuisine, price, rating, address };
 
-    api.updateRestaurant(restaurantId)
+    api.updateRestaurant(requestBody, restaurantId)
     .then(() =>{
         navigate(`/`)
     })
@@ -119,7 +133,6 @@ export default function UpdateRestaurant(props) {
           onChange={(e) => setCuisine(e.target.value)}
         >
           {cuisinesArray.map((each) => {
-            console.log(each);
             return <option>{each}</option>;
           })}
         </select>
