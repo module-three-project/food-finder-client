@@ -11,6 +11,8 @@ import SignupPage from './pages/SignupPage';
 import LoginPage from './LoginPage';
 import AddRestaurant from './pages/AddRestaurant';
 import SeeRestaurants from './pages/SeeRestaurants';
+import ProfilePage from './pages/ProfilePage'
+import ViewRestaurant from './pages/ViewRestaurant';
 
 const API_URL = "http://localhost:5005";
 
@@ -39,7 +41,9 @@ function App() {
       <Route path='/restaurants/create' element={<AddRestaurant listOfCities={cities}/>}/> 
       <Route path='/cities/:cityId' element={<SeeRestaurants/>}/> 
       <Route path='/signup' element={<SignupPage/>}/> 
-      <Route path='/login' element={<LoginPage/>}/> 
+      <Route path='/login' element={<LoginPage/>}/>
+      <Route path='/profile/' element={<ProfilePage/>}/> 
+      <Route path='/restaurants/:restaurantId' element={<ViewRestaurant/>}/>
       </Routes>
     </div>
   );

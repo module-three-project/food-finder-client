@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link  } from "react-router-dom"
 import axios from "axios"
 import { type } from "@testing-library/user-event/dist/type"
+
 
 const API_URL = "http://localhost:5005"
 
@@ -42,7 +43,7 @@ if (isLoading) {
             {city.restaurants.map((restaurant)=>{
                 console.log(restaurant)
                 return(
-                    <p>{restaurant.name}</p>
+                    <p><Link to={`/restaurants/${restaurant._id}`}>{restaurant.name}</Link></p>
                 )
             })}
         </div>

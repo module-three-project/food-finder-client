@@ -11,6 +11,7 @@ export default function Navbar() {
             {isLoggedIn && (<>
                 <Link to='cities/create'>Add Your City</Link>
                 <Link to='restaurants/create'>Add a New Restaurant</Link>
+                <Link to='/profile'>Profile</Link>
                 <button onClick={logOutUser}>Logout</button>
                 <span>{user && user.name}</span>
                 
