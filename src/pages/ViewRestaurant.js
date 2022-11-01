@@ -25,14 +25,15 @@ export default function ViewRestaurant () {
         // .delete(`${API_URL}/api/restaurants/${restaurantId}`,  { headers: { Authorization: `Bearer ${storedToken}` } })
         api.deleteRestaurant(restaurantId)
         .then(() =>{
-            navigate('/city/')
+          console.log('do i have resto details', restaurantDetails.city)
+            navigate(`/cities/${restaurantDetails.city}`)
         })
         .catch((error) => console.log(error));
     }
 
     const getRestaurant = () => {          
         axios
-          .get(`${API_URL}/api/restaurants/${restaurantId}`)
+          .get(`${process.env.REACT_APP_API_URL}/api/restaurants/${restaurantId}`)
           .then((response) => {
             console.log('response:', response)
             const restaurant = response.data;

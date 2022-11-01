@@ -1,7 +1,7 @@
 export default function HomePage(){
     return(
         <div>
-            <h1>hi sask</h1>
+            <h1>This is your homepage</h1>
         </div>
     )
 }

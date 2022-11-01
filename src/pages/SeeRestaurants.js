@@ -13,7 +13,7 @@ export default function SeeRestaurants(){
 
     const getCity = () => {          
         axios
-          .get(`${API_URL}/api/cities/${cityId}`)
+          .get(`${process.env.REACT_APP_API_URL}/api/cities/${cityId}`)
           .then((response) => {
             console.log('response:', response)
             const foundCity = response.data;

@@ -14,6 +14,7 @@ import SeeRestaurants from './pages/SeeRestaurants';
 import ProfilePage from './pages/ProfilePage'
 import ViewRestaurant from './pages/ViewRestaurant';
 import UpdateRestaurant from './pages/UpdateRestaurant';
+import AboutPage from './pages/AboutPage';
 
 const API_URL = "http://localhost:5005";
 
@@ -22,7 +23,7 @@ function App() {
 
   const getAllCities = () => {
       axios
-        .get(`${API_URL}/api/cities`)
+        .get(`${process.env.REACT_APP_API_URL}/api/cities`)
         .then((response) => setCities(response.data))
         .catch((error) => console.log(error));
     };
@@ -43,6 +44,7 @@ function App() {
       <Route path='/cities/:cityId' element={<SeeRestaurants/>}/> 
       <Route path='/signup' element={<SignupPage/>}/> 
       <Route path='/login' element={<LoginPage/>}/>
+      <Route path='/about' element={<AboutPage/>}/> 
       <Route path='/profile/' element={<ProfilePage/>}/> 
       <Route path='/restaurants/:restaurantId' element={<ViewRestaurant/>}/>
       <Route path='/restaurants/update/:restaurantId' element={<UpdateRestaurant listOfCities={cities}/>}/> 

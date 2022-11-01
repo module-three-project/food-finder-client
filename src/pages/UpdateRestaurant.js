@@ -15,19 +15,23 @@ export default function UpdateRestaurant(props) {
 
   const navigate = useNavigate();
 
-  const [name, setName] = useState(restaurantDetails.name);
-  const [address, setAddress] = useState(restaurantDetails.address);
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
   const [rating, setRating] = useState("");
   const [cuisine, setCuisine] = useState("");
   const [price, setPrice] = useState("");
   const [cityId, setCityId] = useState("");
   const [isLoading, setLoading] = useState(true);
   const storedToken = localStorage.getItem("authToken");
+  let cityForNav = ''
 
   useEffect(() => {                                  // <== ADD
     axios
-      .get(`${API_URL}/api/restaurants/${restaurantId}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/restaurants/${restaurantId}`)
       .then((response) => {
+        console.log('response:' ,response)
+        console.log(cityId)
+        
         /* 
           We update the state with the project data coming from the response.
           This way we set inputs to show the actual title and description of the project
@@ -43,31 +47,17 @@ export default function UpdateRestaurant(props) {
       .catch((error) => console.log(error));
     
   }, [restaurantId]);
-  
-//function to get the resto from the DB 
-  // const updateRestaurant = () => {
-  //   axios
-  //     .get(`${API_URL}/api/restaurants/${restaurantId}`)
-  //     .then((response) => {
-  //       console.log("response:", response);
-  //       const restaurant = response.data;
-  //       setRestaurantDetails(restaurant);
-  //       setLoading(false);
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
-
-
-  console.log('resto details:', restaurantDetails);
 
   //function to handle the submit 
   const handleSubmit = (e) => {
     e.preventDefault();
     const requestBody = { name, cuisine, price, rating, address };
 
+
     api.updateRestaurant(requestBody, restaurantId)
     .then(() =>{
-        navigate(`/`)
+      console.log('cityID:', cityId)
+        navigate(`/cities/${cityId}`)
     })
     .catch((error) => console.log(error));
   };
@@ -85,6 +75,7 @@ export default function UpdateRestaurant(props) {
         <label>City</label>
         <select
           placeholder="choose"
+          value={cityId}
           name="city"
           onChange={(e) => setCityId(e.target.value)}
         >
@@ -130,6 +121,7 @@ export default function UpdateRestaurant(props) {
         <select
           defaultValue="Select"
           name="cuisine"
+          value={cuisine}
           onChange={(e) => setCuisine(e.target.value)}
         >
           {cuisinesArray.map((each) => {

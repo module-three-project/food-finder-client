@@ -7,7 +7,7 @@ const header = { headers: { Authorization: `Bearer ${storedToken}` } }
 class cityAPI{
     constructor(){
         this.api = axios.create({
-            baseURL: "http://localhost:5005/"
+            baseURL: process.env.REACT_APP_API_URL
         })
     }
     addCity = (requestBody)=> {

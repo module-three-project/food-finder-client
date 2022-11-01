@@ -4,6 +4,7 @@ import cityAPI from "../utils/apiConnect";
 import { useNavigate } from "react-router-dom";
 import ListOfCities from "./ListOfCities";
 import Cuisines from "../cuisines.json";
+import './styles/AddRestaurant.css'
 
 const API_URL = "http://localhost:5005";
 
@@ -41,10 +42,10 @@ export default function AddRestaurant(props) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="AddRestaurant">
+      <form onSubmit={handleSubmit} className="form">
         <label>Name:</label>
-        <input
+        <input className="input-container"
           type="text"
           name="name"
           value={name}
@@ -72,6 +73,7 @@ export default function AddRestaurant(props) {
           name="address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
+          className="input-container"
         />
 
         <label>Rating</label>
@@ -82,6 +84,7 @@ export default function AddRestaurant(props) {
           max={5}
           value={rating}
           onChange={(e) => setRating(e.target.value)}
+          className="input-container"
         />
 
         {/* <label>Cuisine</label>
@@ -92,12 +95,13 @@ export default function AddRestaurant(props) {
                     onChange={(e) => setCuisine(e.target.value)}
                 /> */}
 
-        <label>Cuisine2</label>
+        <label>Cuisine</label>
         <select
           defaultValue="Select"
           name="cuisine"
           onChange={(e) => setCuisine(e.target.value)}
         >
+        <option>Choose Cuisine</option>
           {cuisinesArray.map((each) => {
             console.log(each);
             return <option>{each}</option>;
@@ -117,6 +121,7 @@ export default function AddRestaurant(props) {
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         >
+        <option>Choose Price</option>
           <option value="€">€</option>
           <option value="€€">€€</option>
           <option value="€€€">€€€</option>
@@ -124,6 +129,7 @@ export default function AddRestaurant(props) {
 
         <button> Submit </button>
       </form>
+      <h3>Don't see your city? Use the link at the top to add your city to our website :)</h3>
     </div>
   );
 }
