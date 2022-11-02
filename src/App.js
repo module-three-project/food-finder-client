@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import AddCity from './pages/AddCity';
 import SignupPage from './pages/SignupPage';
-import LoginPage from './LoginPage';
+import LoginPage from './pages/LoginPage';
 import AddRestaurant from './pages/AddRestaurant';
 import SeeRestaurants from './pages/SeeRestaurants';
 import ProfilePage from './pages/ProfilePage'

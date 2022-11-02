@@ -1,17 +1,16 @@
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import api from "../utils/apiConnect";
 import Cuisines from "../cuisines.json"
 
-const API_URL = "http://localhost:5005";
+
 
 export default function UpdateRestaurant(props) {
   const { restaurantId } = useParams();
 
   const [cuisinesArray] = useState(Cuisines)
 
-  const [restaurantDetails, setRestaurantDetails] = useState({});
 
   const navigate = useNavigate();
 
@@ -20,17 +19,16 @@ export default function UpdateRestaurant(props) {
   const [rating, setRating] = useState("");
   const [cuisine, setCuisine] = useState("");
   const [price, setPrice] = useState("");
-  const [cityId, setCityId] = useState("");
-  const [isLoading, setLoading] = useState(true);
-  const storedToken = localStorage.getItem("authToken");
-  let cityForNav = ''
+  const [city, setCityId] = useState("");
+ 
+
 
   useEffect(() => {                                  // <== ADD
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/restaurants/${restaurantId}`)
       .then((response) => {
         console.log('response:' ,response)
-        console.log(cityId)
+
         
         /* 
           We update the state with the project data coming from the response.
@@ -51,13 +49,13 @@ export default function UpdateRestaurant(props) {
   //function to handle the submit 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { name, cuisine, price, rating, address, cityId };
+    const requestBody = { name, cuisine, price, rating, address, city };
 
 
     api.updateRestaurant(requestBody, restaurantId)
     .then(() =>{
-      console.log('cityID:', cityId)
-        navigate(`/cities/${cityId}`)
+      console.log('cityID:', city)
+        navigate(`/cities/${city}`)
     })
     .catch((error) => console.log(error));
   };
@@ -75,7 +73,7 @@ export default function UpdateRestaurant(props) {
         <label>City</label>
         <select
           placeholder="choose"
-          value={cityId}
+          value={city}
           name="city"
           onChange={(e) => setCityId(e.target.value)}
         >

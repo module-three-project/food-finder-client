@@ -33,6 +33,7 @@ export default function AddCity(props) {
 
     return (
         <div>
+        <h2>Add Your City</h2>
             <form onSubmit={handleSubmit}>
                 <label>City Name:</label>
                 <input

@@ -4,7 +4,7 @@ import cityAPI from "../utils/apiConnect";
 import { useNavigate } from "react-router-dom";
 import ListOfCities from "./ListOfCities";
 import Cuisines from "../cuisines.json";
-import './styles/AddRestaurant.css'
+import './styles/AddRestaurant.css';
 
 const API_URL = "http://localhost:5005";
 
@@ -43,90 +43,76 @@ export default function AddRestaurant(props) {
 
   return (
     <div className="AddRestaurant">
-      <form onSubmit={handleSubmit} className="form">
-        <label>Name:</label>
-        <input className="input-container"
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <label>City</label>
-        <select
-        placeholder="choose"
-          name="city"
-          onChange={(e) => setCityId(e.target.value)}
-        >
+    <h2>Add a Restaurant</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="fieldsContainer"><div>
+          <label> Restaurant Name*</label>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          /></div>
+        <div> <label>City*</label>
+          <select
+            placeholder="choose"
+            name="city"
+            onChange={(e) => setCityId(e.target.value)}
+          >
             <option>Choose City</option>
-          {props.listOfCities.map((city) => {
-            return ( <>
-              <option key={city._id} value={city._id}>
-                {city.cityName}
-              </option> </>
-            );
-          })}
-        </select>
+            {props.listOfCities.map((city) => {
+              return (<>
+                <option key={city._id} value={city._id}>
+                  {city.cityName}
+                </option> </>
+              );
+            })}
+          </select></div>
 
-        <label>Address</label>
-        <input
-          type="text"
-          name="address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          className="input-container"
-        />
+        <div><label>Address*</label>
+          <input
+            type="text"
+            name="address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          /></div>
 
-        <label>Rating</label>
-        <input
-          type="number"
-          name="rating"
-          min={1}
-          max={5}
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
-          className="input-container"
-        />
+        <div><label>Rating*</label>
+          <input
+            type="number"
+            name="rating"
+            min={1}
+            max={5}
+            value={rating}
+            onChange={(e) => setRating(e.target.value)}
+          /></div>
 
-        {/* <label>Cuisine</label>
-                <input
-                    type="text"
-                    name="cuisine"
-                    value={cuisine}
-                    onChange={(e) => setCuisine(e.target.value)}
-                /> */}
 
-        <label>Cuisine</label>
-        <select
-          defaultValue="Select"
-          name="cuisine"
-          onChange={(e) => setCuisine(e.target.value)}
-        >
-        <option>Choose Cuisine</option>
-          {cuisinesArray.map((each) => {
-            console.log(each);
-            return <option>{each}</option>;
-          })}
-        </select>
+        <div><label>Cuisine*</label>
+          <select
+            defaultValue="Select"
+            name="cuisine"
+            onChange={(e) => setCuisine(e.target.value)}
+          >
+            <option>Choose Cuisine</option>
+            {cuisinesArray.map((each) => {
+              console.log(each);
+              return <option>{each}</option>;
+            })}
+          </select></div>
 
-        {/* <label>Price</label>
-        <input
-          type="text"
-          name="price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        /> */}
-        <label>Price</label>
-        <select
-          name="price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        >
-        <option>Choose Price</option>
-          <option value="€">€</option>
-          <option value="€€">€€</option>
-          <option value="€€€">€€€</option>
-        </select>
-
+        <div><label>Price*</label>
+          <select
+            name="price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          >
+            <option>Choose Price</option>
+            <option value="€">€</option>
+            <option value="€€">€€</option>
+            <option value="€€€">€€€</option>
+          </select></div>
+</div>
         <button> Submit </button>
       </form>
       <h3>Don't see your city? Use the link at the top to add your city to our website :)</h3>

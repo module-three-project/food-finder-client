@@ -1,5 +1,4 @@
 import axios from "axios";
-import {AuthContext} from "../context/auth.context"
 const storedToken = localStorage.getItem("authToken")
 
 const header = { headers: { Authorization: `Bearer ${storedToken}` } }

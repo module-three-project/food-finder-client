@@ -1,0 +1,64 @@
+.AddRestaurant{
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.AddRestaurant h1 {
+  margin: 0;
+  font-weight: 400;
+}
+.AddRestaurant button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+  }
+
+.fieldsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  width: 700px;
+  padding-right: 500px;
+}
+
+.fieldsContainer >div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    }
+    .fieldsContainer >div{
+    width: 100%;
+    }
+
+    label {
+        padding: 0 5px;
+        text-align: right;
+        vertical-align: middle;
+        }
+        input {
+        padding: 5px;
+        vertical-align: middle;
+        width: 20%;
+        margin: 10px 0;
+        }
+
+        select{
+            width: 21%;
+            padding: 5px 10px;
+            margin: 10px 0;
+            }
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}

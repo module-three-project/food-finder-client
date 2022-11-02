@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams, Link  } from "react-router-dom"
 import axios from "axios"
-import { type } from "@testing-library/user-event/dist/type"
 
 
-const API_URL = "http://localhost:5005"
+
 
 export default function SeeRestaurants(){
     const [city, setCity]=useState('')
@@ -41,7 +40,6 @@ if (isLoading) {
             <h1>Restaurants in {city.cityName}</h1>
 
             {city.restaurants.map((restaurant)=>{
-                console.log('will this fix it', restaurant)
                 return(
                     <p><Link to={`/restaurants/${restaurant._id}`}>{restaurant.name}</Link></p>
                 )

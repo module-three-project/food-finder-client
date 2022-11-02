@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import './styles/SignupLogin.css'
  
 const API_URL = "http://localhost:5005";
  
@@ -33,7 +34,7 @@ function SignupPage(props) {
  
   
   return (
-    <div className="SignupPage">
+    <div className="Signup container" >
       <h1>Sign Up</h1>
  
       <form onSubmit={handleSignupSubmit}>
@@ -60,7 +61,7 @@ function SignupPage(props) {
       { errorMessage && <p className="error-message">{errorMessage}</p> }
  
       <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+      <Link to={"/login"}> <button>Login </button></Link>
     </div>
   )
 }

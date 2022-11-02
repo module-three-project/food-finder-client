@@ -1,9 +1,8 @@
-import {Link, Navigate, useNavigate, useParams} from "react-router-dom"
+import {Link, useNavigate, useParams} from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import api from "../utils/apiConnect"
-
-const API_URL = "http://localhost:5005"
+import addressLogo from "../images/addressIcon.png"
 
 export default function ViewRestaurant () {
     
@@ -14,6 +13,7 @@ export default function ViewRestaurant () {
     const navigate = useNavigate()
     
     const [isLoading, setLoading] = useState(true)
+
 
     const storedToken = localStorage.getItem("authToken")
     
@@ -48,11 +48,12 @@ export default function ViewRestaurant () {
       },[] );
 
       console.log(restaurantDetails)
+      console.log('console tofix ')
 
     return (
         <div>
             <h1>{restaurantDetails.name}</h1>
-            <h1>{restaurantDetails.address}</h1>
+            <h3>{restaurantDetails.address}</h3>
             <h1>{restaurantDetails.rating}</h1>
             <h1>{restaurantDetails.cuisine}</h1>
             <h1>{restaurantDetails.price}</h1>
@@ -63,6 +64,7 @@ export default function ViewRestaurant () {
 
 
             <button onClick={deleteRestaurant}>Delete</button>
+            {/* <button>Like This Restaurant</button> */}
         </div>
         
     )

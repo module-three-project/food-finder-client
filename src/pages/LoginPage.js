@@ -2,7 +2,8 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react"
-import { AuthContext } from './context/auth.context';
+import { AuthContext } from '../context/auth.context';
+import './styles/SignupLogin.css'
 
 const API_URL = "http://localhost:5005";
 
@@ -38,7 +39,7 @@ function LoginPage(props) {
     };
 
     return (
-        <div className="LoginPage">
+        <div className="Login container">
             <h1>Login</h1>
 
             <form onSubmit={handleLoginSubmit}>
