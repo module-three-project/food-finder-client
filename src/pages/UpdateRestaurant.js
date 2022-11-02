@@ -51,7 +51,7 @@ export default function UpdateRestaurant(props) {
   //function to handle the submit 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { name, cuisine, price, rating, address };
+    const requestBody = { name, cuisine, price, rating, address, cityId };
 
 
     api.updateRestaurant(requestBody, restaurantId)

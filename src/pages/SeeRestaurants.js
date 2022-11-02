@@ -38,10 +38,10 @@ if (isLoading) {
   
     return(
         <div>
-            <h1>Restaurants in this city:</h1>
+            <h1>Restaurants in {city.cityName}</h1>
 
             {city.restaurants.map((restaurant)=>{
-                console.log(restaurant)
+                console.log('will this fix it', restaurant)
                 return(
                     <p><Link to={`/restaurants/${restaurant._id}`}>{restaurant.name}</Link></p>
                 )
