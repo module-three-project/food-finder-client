@@ -53,7 +53,6 @@ export default function ViewRestaurant () {
       console.log('console tofix ')
 
       const {user} = useContext(AuthContext);
-      console.log('who is logged in?:',user?.email)
       
 
     return (
@@ -64,14 +63,14 @@ export default function ViewRestaurant () {
             <h1>{restaurantDetails.cuisine}</h1>
             <h1>{restaurantDetails.price}</h1>
             <h1>{restaurantDetails.description}</h1>
-            <h5>{restaurantDetails.email}</h5>
+            <h5>{restaurantDetails?.email}</h5>
             
-            {user.email === restaurantDetails.email &&
+            {user?.email === restaurantDetails?.email &&
            <Link to={`/restaurants/update/${restaurantDetails._id}`}>
             <button>Update</button>
            </Link>}
 
-           {user.email === restaurantDetails.email &&
+           {user?.email === restaurantDetails?.email &&
             <button onClick={deleteRestaurant}>Delete</button>}
         </div>
         

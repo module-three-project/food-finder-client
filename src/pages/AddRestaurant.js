@@ -97,6 +97,8 @@ export default function AddRestaurant(props) {
 
 <div><label>Description*</label>
           <textarea
+          cols="30"
+          rows="8"
           type="text"
             name="description"
             value={description}

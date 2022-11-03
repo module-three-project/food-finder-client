@@ -105,6 +105,8 @@ export default function UpdateRestaurant(props) {
 <label>Description</label>
         <textarea
           type="text"
+          cols="70"
+          rows="5"
           name="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
