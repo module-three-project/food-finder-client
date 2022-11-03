@@ -20,6 +20,7 @@ export default function AddRestaurant(props) {
   const [cuisine, setCuisine] = useState("");
   const [price, setPrice] = useState("");
   const [cityId, setCityId] = useState("");
+  const [errorMessage, setErrorMessage] = useState(undefined);
   const navigate = useNavigate();
 
   console.log(props);
@@ -43,8 +44,9 @@ export default function AddRestaurant(props) {
         setDescription("")
         navigate("/cities");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+                setErrorMessage(errorDescription)
       });
   };
 
@@ -144,6 +146,7 @@ export default function AddRestaurant(props) {
 </div>
         <button> Submit </button>
       </form>
+      { errorMessage && <p className="error-message">{errorMessage}</p> }
       </div>
     </div>
   );

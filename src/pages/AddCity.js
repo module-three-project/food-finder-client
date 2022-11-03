@@ -11,6 +11,7 @@ export default function AddCity(props) {
     const [cityName, setCityName] = useState('')
     const [country, setCountry] = useState('')
     const [description, setDescription] = useState('')
+    const [errorMessage, setErrorMessage] = useState(undefined);
     const navigate = useNavigate();
 
     //function to handle form submission
@@ -26,7 +27,8 @@ export default function AddCity(props) {
                 props.cbToGetCities();
                 navigate("/cities")
             })
-            .catch((error) => { console.log(error) })
+            .catch((error) => { const errorDescription = error.response.data.message;
+                setErrorMessage(errorDescription) })
     };
 
     console.log(props)
@@ -61,6 +63,7 @@ export default function AddCity(props) {
                 />
                 <button> Submit </button>
             </form>
+            { errorMessage && <p className="error-message">{errorMessage}</p> }
         </div>
     )
 }
