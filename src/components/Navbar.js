@@ -7,8 +7,9 @@ export default function Navbar() {
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
     return (
         <nav className="topnav">
+        <Link to='about'>About</Link>
             <Link to='cities'>Cities</Link>
-            <Link to='about'>About</Link>
+            
             {isLoggedIn && (<>
                 <Link to='cities/create'>Add Your City</Link>
                 <Link to='restaurants/create'>Add a New Restaurant</Link>

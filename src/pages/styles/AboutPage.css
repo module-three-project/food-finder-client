@@ -1,0 +1,20 @@
+.aboutText{
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    margin: auto;
+}
+
+.AboutPage{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.title{
+
+    text-decoration: underline;
+}

@@ -28,6 +28,7 @@ export default function SeeRestaurants(){
 
 console.log('city:', city)
 console.log('cityRestos:', city.restaurants)
+console.log('restaurantslength', city?.restaurants?.length)
 console.log('cityId:' ,cityId)
 
 ///////error going on with this where first the code doesnt run until you remove the map and then put it back in 
@@ -39,11 +40,17 @@ if (isLoading) {
         <div>
             <h1>Restaurants in {city.cityName}</h1>
 
-            {city.restaurants.map((restaurant)=>{
+            {city?.restaurants.length !== 0 ? 
+              city.restaurants.map((restaurant)=>{
                 return(
                     <p><Link to={`/restaurants/${restaurant._id}`}>{restaurant.name}</Link></p>
                 )
-            })}
+            }) : <div>
+            <h3>Sorry no restaurants yet</h3>
+            <h3><Link to='/restaurants/create'>Add one?</Link></h3>
+            </div>
+             }
+           
         </div>
     )
 }

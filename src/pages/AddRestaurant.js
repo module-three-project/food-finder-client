@@ -23,9 +23,6 @@ export default function AddRestaurant(props) {
   const [errorMessage, setErrorMessage] = useState(undefined);
   const navigate = useNavigate();
 
-  console.log(props);
-  console.log(cuisinesArray);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const requestBody = { name: name, address: address, rating: rating, cuisine: cuisine, price:price, description:description, cityId:cityId, };
@@ -52,16 +49,17 @@ export default function AddRestaurant(props) {
 
   const {user} = useContext(AuthContext);
   console.log("email:",user.email)
- 
+ console.log('console')
 
   return (
     <div className="AddRestaurant">
     
-    <h1>Add a Restaurant</h1>
+
     <div className="textAndForm">
     <div className="divForText">
-    <h5>Enter the name of the restaurant, the city where we can find it and the street address. Choose a number between 1 and 5 (where 5 is the best!) to rate it, select the cuisine, and let us know how pricey it is.</h5>
-    <h6>Don't see your city? Use the link at the top to add your city to our website :)</h6>
+
+    <h4>Enter the name of the restaurant, the city where we can find it and the street address. Choose a number between 1 and 5 (where 5 is the best!) to rate it, select the cuisine, and let us know how pricey it is.</h4>
+    <h5>Don't see your city? Use the link at the top to add your city to our website :)</h5>
     </div>
       <form onSubmit={handleSubmit}>
         <div className="fieldsContainer"><div>
@@ -126,7 +124,7 @@ export default function AddRestaurant(props) {
           >
             <option>Choose Cuisine</option>
             {cuisinesArray.map((each) => {
-              console.log(each);
+              
               return <option>{each}</option>;
             })}
           </select></div>
