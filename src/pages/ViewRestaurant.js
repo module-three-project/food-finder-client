@@ -63,6 +63,7 @@ export default function ViewRestaurant () {
             <h1>{restaurantDetails.rating}</h1>
             <h1>{restaurantDetails.cuisine}</h1>
             <h1>{restaurantDetails.price}</h1>
+            <h1>{restaurantDetails.description}</h1>
             <h5>{restaurantDetails.email}</h5>
             
             {user.email === restaurantDetails.email &&

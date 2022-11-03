@@ -1,8 +1,8 @@
 import axios from "axios"
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
+import api from "../utils/apiConnect";
 
-const API_URL = "http://localhost:5005"
 
 export default function ProfilePage(){
     const [user, setUser] = useState(null)
@@ -12,8 +12,7 @@ export default function ProfilePage(){
     const getUser = () => {
         const storedToken = localStorage.getItem("authToken")
         console.log(storedToken)
-        axios
-        .get(`${API_URL}/api/profile/${profileId}`)
+        api.findUser(profileId)
         .then((response) => {
             console.log('response:', response)
             const foundUser = response.data;

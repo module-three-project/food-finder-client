@@ -8,6 +8,20 @@ class cityAPI{
         this.api = axios.create({
             baseURL: process.env.REACT_APP_API_URL
         })
+        this.api.interceptors.request.use(
+            (config) => {
+              const token = localStorage.getItem('token')
+              if (token) {
+                config.headers = {
+                  Authorization: `Bearer ${token}`,
+                }
+              }
+              return config
+            },
+            (error) => {
+              throw error
+            }
+          )
     }
     addCity = (requestBody)=> {
         return this.api.post(`api/cities`, requestBody, header) 
@@ -23,6 +37,9 @@ class cityAPI{
 
     updateRestaurant = (requestBody, restaurantId)=>{
         return this.api.put(`api/restaurants/${restaurantId}`, requestBody, header )
+    }
+    findUser = (profileId)=>{
+        return this.api.get(`api/profile/${profileId}`, header)
     }
     
 }

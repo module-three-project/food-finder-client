@@ -15,6 +15,7 @@ export default function AddRestaurant(props) {
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
+  const [ description, setDescription]= useState("")
   const [rating, setRating] = useState("");
   const [cuisine, setCuisine] = useState("");
   const [price, setPrice] = useState("");
@@ -26,9 +27,9 @@ export default function AddRestaurant(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { name: name, address: address, rating: rating, cuisine: cuisine, price:price, cityId:cityId};
+    const requestBody = { name: name, address: address, rating: rating, cuisine: cuisine, price:price, description:description, cityId:cityId, };
     const newResto = {
-      name: name, address: address, rating: rating, cuisine: cuisine, price:price, cityId:cityId, email:user.email
+      name: name, address: address, rating: rating, cuisine: cuisine, price:price, cityId:cityId, email:user.email, description:description
     }
   console.log('console log',newResto)
     cityAPI
@@ -39,6 +40,7 @@ export default function AddRestaurant(props) {
         setRating("");
         setPrice("");
         setCuisine("");
+        setDescription("")
         navigate("/cities");
       })
       .catch((err) => {
@@ -92,6 +94,14 @@ export default function AddRestaurant(props) {
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           /></div>
+
+<div><label>Description*</label>
+          <textarea
+          type="text"
+            name="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          ></textarea></div>
 
         <div><label>Rating*</label>
           <input

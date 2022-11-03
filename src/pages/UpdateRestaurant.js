@@ -17,6 +17,7 @@ export default function UpdateRestaurant(props) {
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
+  const [ description, setDescription]= useState("")
   const [rating, setRating] = useState("");
   const [cuisine, setCuisine] = useState("");
   const [price, setPrice] = useState("");
@@ -41,6 +42,7 @@ export default function UpdateRestaurant(props) {
         setCuisine(oneResto.cuisine);
         setPrice(oneResto.price);
         setAddress(oneResto.address);
+        setDescription(oneResto.description);
         setCityId(oneResto.city);
       })
       .catch((error) => console.log(error));
@@ -50,7 +52,7 @@ export default function UpdateRestaurant(props) {
   //function to handle the submit 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { name, cuisine, price, rating, address, city };
+    const requestBody = { name, cuisine, price, rating, address, city, description };
 
 
     api.updateRestaurant(requestBody, restaurantId)
@@ -100,6 +102,14 @@ export default function UpdateRestaurant(props) {
           onChange={(e) => setAddress(e.target.value)}
         />
 
+<label>Description</label>
+        <textarea
+          type="text"
+          name="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
+
         <label>Rating</label>
         <input
           type="number"
@@ -126,7 +136,7 @@ export default function UpdateRestaurant(props) {
           onChange={(e) => setCuisine(e.target.value)}
         >
           {cuisinesArray.map((each) => {
-            return <option>{each}</option>;
+            return <option key={each}>{each}</option>;
           })}
         </select>
 
