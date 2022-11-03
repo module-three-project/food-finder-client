@@ -2,9 +2,11 @@ import {Link, useNavigate, useParams} from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import api from "../utils/apiConnect"
-import addressLogo from "../images/addressIcon.png"
+import addressLogo from "../images/addressIcon2.png"
+import star from '../images/star.png'
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
+import './styles/ViewRestaurant.css'
 
 export default function ViewRestaurant () {
     
@@ -54,24 +56,40 @@ export default function ViewRestaurant () {
 
       const {user} = useContext(AuthContext);
       
+      const maxWidthForIcon = {
+        maxWidth: 30
+      }
 
     return (
-        <div>
+        <div className="ViewRestaurant">
             <h1>{restaurantDetails.name}</h1>
-            <h3>{restaurantDetails.address}</h3>
-            <h1>{restaurantDetails.rating}</h1>
-            <h1>{restaurantDetails.cuisine}</h1>
-            <h1>{restaurantDetails.price}</h1>
-            <h1>{restaurantDetails.description}</h1>
-            <h5>{restaurantDetails?.email}</h5>
+            <div className="underTitle">
+            <div className="detailsRestaurant">
+            <h4><img src={addressLogo} alt="address" style={maxWidthForIcon}/>{restaurantDetails.address}</h4>
+            
+{restaurantDetails.rating === 1 && <div><img src={star} alt="star"/>    </div>}
+{restaurantDetails.rating === 2 && <div><img src={star} alt="star"/><img src={star} alt="star"/></div>}
+{restaurantDetails.rating === 3 && <div><img src={star} alt="star"/><img src={star} alt="star"/><img src={star} alt="star"/></div>}
+{restaurantDetails.rating === 4 && <div><img src={star} alt="star"/><img src={star} alt="star"/><img src={star} alt="star"/><img src={star} alt="star"/></div>}
+{restaurantDetails.rating === 5 && <div><img src={star} alt="star"/><img src={star} alt="star"/><img src={star} alt="star"/><img src={star} alt="star"/><img src={star} alt="star"/></div>}
+            <h2>{restaurantDetails.price} </h2>
+            <h3> Serves {restaurantDetails.cuisine} food</h3>
+           
+            <h6>This restaurant was added by:{restaurantDetails?.email}</h6>
             
             {user?.email === restaurantDetails?.email &&
            <Link to={`/restaurants/update/${restaurantDetails._id}`}>
-            <button>Update</button>
+            <button className="update">Update</button>
            </Link>}
 
            {user?.email === restaurantDetails?.email &&
-            <button onClick={deleteRestaurant}>Delete</button>}
+            <button onClick={deleteRestaurant} className="delete">Delete</button>}
+            </div>
+            <div className="descriptionDiv">
+            <h3>How do people describe this restaurant?</h3>
+            <h3>"{restaurantDetails.description}"</h3>
+            </div>
+            </div>
         </div>
         
     )

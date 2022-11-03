@@ -16,9 +16,12 @@
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 20%;
-    
   }
+
+.buttonDiv{
+  padding-left: 300px;
+}
+
 
 .fieldsContainer {
   display: flex;

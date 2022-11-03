@@ -144,7 +144,8 @@ export default function AddRestaurant(props) {
           </select></div>
           
 </div>
-        <button> Submit </button>
+<div className="buttonDiv">
+        <button> Submit </button></div>
       </form>
       { errorMessage && <p className="error-message">{errorMessage}</p> }
       </div>

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import api from "../utils/apiConnect";
 import Cuisines from "../cuisines.json"
+import './styles/UpdateRestaurant.css'
 
 
 
@@ -160,7 +161,7 @@ export default function UpdateRestaurant(props) {
           <option value="€€€">€€€</option>
         </select>
 
-        <button> Submit </button>
+        <button className="submit"> Submit </button>
       </form>
     </div>
   );
