@@ -32,7 +32,7 @@ export default function ProfilePage(){
     return(
         <div>
             <h3>Welcome to your profile,</h3>
-            <h4>{user?.email}</h4>
+            <h4>You are logged in as: {user?.email}</h4>
 
         </div>
     )

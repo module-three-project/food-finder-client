@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams, Link  } from "react-router-dom"
 import axios from "axios"
+import './styles/SeeRestaurants.css'
 
 
 
@@ -37,20 +38,23 @@ if (isLoading) {
   }
   
     return(
-        <div>
+        <div className="SeeRestaurants">
             <h1>Restaurants in {city.cityName}</h1>
-
+<div className="allRestaurants">
             {city?.restaurants.length !== 0 ? 
               city.restaurants.map((restaurant)=>{
-                return(
-                    <p><Link to={`/restaurants/${restaurant._id}`}>{restaurant.name}</Link></p>
+                return(<div className="restoCard">
+                    <h1><Link to={`/restaurants/${restaurant._id}`}>{restaurant.name} </Link></h1>
+                   <div> <p>Serves:{restaurant.cuisine}</p> </div>
+                   <div> <p>Cost:{restaurant.price}</p> </div>
+</div>
                 )
             }) : <div>
             <h3>Sorry no restaurants yet</h3>
             <h3><Link to='/restaurants/create'>Add one?</Link></h3>
             </div>
              }
-           
+             </div>
         </div>
     )
 }

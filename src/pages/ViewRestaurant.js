@@ -87,7 +87,7 @@ export default function ViewRestaurant () {
             </div>
             <div className="descriptionDiv">
             <h3>How do people describe this restaurant?</h3>
-            <h3>"{restaurantDetails.description}"</h3>
+            <h3 className="restoDescription">"{restaurantDetails.description}"</h3>
             </div>
             </div>
         </div>
