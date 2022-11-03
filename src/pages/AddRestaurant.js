@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import ListOfCities from "./ListOfCities";
 import Cuisines from "../cuisines.json";
 import './styles/AddRestaurant.css';
+import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
 
 const API_URL = "http://localhost:5005";
 
@@ -24,10 +26,13 @@ export default function AddRestaurant(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const requestBody = { name, address, rating, cuisine, price, cityId };
+    const requestBody = { name: name, address: address, rating: rating, cuisine: cuisine, price:price, cityId:cityId};
+    const newResto = {
+      name: name, address: address, rating: rating, cuisine: cuisine, price:price, cityId:cityId, email:user.email
+    }
+  console.log('console log',newResto)
     cityAPI
-      .addRestaurant(requestBody)
+      .addRestaurant(newResto)
       .then((response) => {
         setName("");
         setAddress("");
@@ -41,11 +46,22 @@ export default function AddRestaurant(props) {
       });
   };
 
+  const {user} = useContext(AuthContext);
+  console.log("email:",user.email)
+ 
+
   return (
     <div className="AddRestaurant">
-    <h2>Add a Restaurant</h2>
+    
+    <h1>Add a Restaurant</h1>
+    <div className="textAndForm">
+    <div className="divForText">
+    <h5>Enter the name of the restaurant, the city where we can find it and the street address. Choose a number between 1 and 5 (where 5 is the best!) to rate it, select the cuisine, and let us know how pricey it is.</h5>
+    <h6>Don't see your city? Use the link at the top to add your city to our website :)</h6>
+    </div>
       <form onSubmit={handleSubmit}>
         <div className="fieldsContainer"><div>
+        
           <label> Restaurant Name*</label>
           <input
             type="text"
@@ -112,10 +128,11 @@ export default function AddRestaurant(props) {
             <option value="€€">€€</option>
             <option value="€€€">€€€</option>
           </select></div>
+          
 </div>
         <button> Submit </button>
       </form>
-      <h3>Don't see your city? Use the link at the top to add your city to our website :)</h3>
+      </div>
     </div>
   );
 }

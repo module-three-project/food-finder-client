@@ -6,7 +6,7 @@
 }
 
 .AddRestaurant h1 {
-  margin: 0;
+  margin: 10px;
   font-weight: 400;
 }
 .AddRestaurant button {
@@ -17,6 +17,7 @@
     border: none;
     cursor: pointer;
     width: 20%;
+    
   }
 
 .fieldsContainer {
@@ -24,8 +25,8 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
-  width: 700px;
-  padding-right: 500px;
+  width: 600px;
+
 }
 
 .fieldsContainer >div{
@@ -46,12 +47,12 @@
         input {
         padding: 5px;
         vertical-align: middle;
-        width: 20%;
+        width: 40%;
         margin: 10px 0;
         }
 
         select{
-            width: 21%;
+            width: 41%;
             padding: 5px 10px;
             margin: 10px 0;
             }
@@ -61,4 +62,33 @@ form{
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+}
+
+.divForText{
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.textAndForm{
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+
+.AddCity button{
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+}
+
+.AddCity input[name=description]{
+    height: 60px;
 }

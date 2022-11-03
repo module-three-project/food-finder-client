@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import api from "../utils/apiConnect"
 import addressLogo from "../images/addressIcon.png"
+import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
 
 export default function ViewRestaurant () {
     
@@ -50,6 +52,10 @@ export default function ViewRestaurant () {
       console.log(restaurantDetails)
       console.log('console tofix ')
 
+      const {user} = useContext(AuthContext);
+      console.log('who is logged in?:',user?.email)
+      
+
     return (
         <div>
             <h1>{restaurantDetails.name}</h1>
@@ -57,14 +63,15 @@ export default function ViewRestaurant () {
             <h1>{restaurantDetails.rating}</h1>
             <h1>{restaurantDetails.cuisine}</h1>
             <h1>{restaurantDetails.price}</h1>
+            <h5>{restaurantDetails.email}</h5>
             
+            {user.email === restaurantDetails.email &&
            <Link to={`/restaurants/update/${restaurantDetails._id}`}>
             <button>Update</button>
-           </Link>
+           </Link>}
 
-
-            <button onClick={deleteRestaurant}>Delete</button>
-            {/* <button>Like This Restaurant</button> */}
+           {user.email === restaurantDetails.email &&
+            <button onClick={deleteRestaurant}>Delete</button>}
         </div>
         
     )

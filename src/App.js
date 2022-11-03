@@ -45,7 +45,7 @@ function App() {
       <Route path='/signup' element={<SignupPage/>}/> 
       <Route path='/login' element={<LoginPage/>}/>
       <Route path='/about' element={<AboutPage/>}/> 
-      <Route path='/profile/' element={<ProfilePage/>}/> 
+      <Route path='/profile/:profileId' element={<ProfilePage/>}/> 
       <Route path='/restaurants/:restaurantId' element={<ViewRestaurant/>}/>
       <Route path='/restaurants/update/:restaurantId' element={<UpdateRestaurant listOfCities={cities}/>}/> 
       </Routes>

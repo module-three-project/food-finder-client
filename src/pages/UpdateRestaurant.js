@@ -6,6 +6,7 @@ import Cuisines from "../cuisines.json"
 
 
 
+
 export default function UpdateRestaurant(props) {
   const { restaurantId } = useParams();
 
@@ -59,6 +60,8 @@ export default function UpdateRestaurant(props) {
     })
     .catch((error) => console.log(error));
   };
+
+
 
   return (
     <div>

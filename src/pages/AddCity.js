@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import cityAPI from '../utils/apiConnect'
 import { useNavigate } from "react-router-dom";
+import "./styles/AddRestaurant.css"
 
 const API_URL = "http://localhost:5005";
 
@@ -32,7 +33,7 @@ export default function AddCity(props) {
 
 
     return (
-        <div>
+        <div className="AddCity">
         <h2>Add Your City</h2>
             <form onSubmit={handleSubmit}>
                 <label>City Name:</label>
