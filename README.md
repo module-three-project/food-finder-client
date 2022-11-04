@@ -1,3 +1,34 @@
+# Food Finder by Saskia & Marc
+
+For our project we created a website to find restaurants in different cities. When logged in, a person is able to view all cities and restaurants, add new cities and restaurants, update and delete their own previous contributions.
+Without being logged in, you may only view cities and restaurants, and cannot contribute.
+
+
+## **Instructions to run on your computer**  
+
+Clone both this file and the file for the server.
+
+### In the client file create a .env file - in this add:  
+
+REACT_APP_API_URL=http://localhost:5005
+
+### In the server file create a .env file - in this add: 
+PORT=5005
+ORIGIN=http://localhost:3000
+TOKEN_SECRET=y0uRt0k3N$eCr3T
+  
+  
+Next you will need to run the command **npm install** to install all the dependencies for this app.
+
+Finally, to run the script in your local computer, on the client side rude the command **npm run start**. and on the server side rude the command **npm run dev**. 
+
+
+## Check the online version
+Take a look at our online art gallery:   
+[Foodfinder Link]([https://artwork-project.herokuapp.com/?](https://ironic-food-finder.netlify.app/))
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
