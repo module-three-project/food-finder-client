@@ -24,10 +24,10 @@ Finally, to run the script in your local computer, on the client side rude the c
 
 
 ## Check the online version
-Take a look at our online art gallery:   
-[Foodfinder Link]([https://artwork-project.herokuapp.com/?](https://ironic-food-finder.netlify.app/))
+Take a look at our live site:   
+[FoodFinder](https://ironic-food-finder.netlify.app/)
 
-
+https://ironic-food-finder.netlify.app/
 
 # Getting Started with Create React App
 
