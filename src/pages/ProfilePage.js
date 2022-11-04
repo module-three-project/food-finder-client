@@ -4,22 +4,22 @@ import { useParams } from "react-router-dom"
 import api from "../utils/apiConnect";
 
 
-export default function ProfilePage(){
+export default function ProfilePage() {
     const [user, setUser] = useState(null)
-    const {profileId} = useParams()
+    const { profileId } = useParams()
     const [isLoading, setLoading] = useState(true)
 
     const getUser = () => {
         const storedToken = localStorage.getItem("authToken")
         console.log(storedToken)
         api.findUser(profileId)
-        .then((response) => {
-            console.log('response:', response)
-            const foundUser = response.data;
-            setUser(foundUser);
-            setLoading(false)
-        })
-        .catch((error) => console.log(error));
+            .then((response) => {
+                console.log('response:', response)
+                const foundUser = response.data;
+                setUser(foundUser);
+                setLoading(false)
+            })
+            .catch((error) => console.log(error));
     };
 
     useEffect(() => {
@@ -28,8 +28,8 @@ export default function ProfilePage(){
 
     console.log('user', user)
     console.log('userId', profileId)
-    
-    return(
+
+    return (
         <div>
             <h3>Welcome to your profile,</h3>
             <h4>You are logged in as: {user?.email}</h4>

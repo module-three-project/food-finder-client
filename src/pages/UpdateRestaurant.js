@@ -18,21 +18,21 @@ export default function UpdateRestaurant(props) {
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
-  const [ description, setDescription]= useState("")
+  const [description, setDescription] = useState("")
   const [rating, setRating] = useState("");
   const [cuisine, setCuisine] = useState("");
   const [price, setPrice] = useState("");
   const [city, setCityId] = useState("");
- 
+
 
 
   useEffect(() => {                                  // <== ADD
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/restaurants/${restaurantId}`)
       .then((response) => {
-        console.log('response:' ,response)
+        console.log('response:', response)
 
-        
+
         /* 
           We update the state with the project data coming from the response.
           This way we set inputs to show the actual title and description of the project
@@ -47,7 +47,7 @@ export default function UpdateRestaurant(props) {
         setCityId(oneResto.city);
       })
       .catch((error) => console.log(error));
-    
+
   }, [restaurantId]);
 
   //function to handle the submit 
@@ -57,11 +57,11 @@ export default function UpdateRestaurant(props) {
 
 
     api.updateRestaurant(requestBody, restaurantId)
-    .then(() =>{
-      console.log('cityID:', city)
+      .then(() => {
+        console.log('cityID:', city)
         navigate(`/cities/${city}`)
-    })
-    .catch((error) => console.log(error));
+      })
+      .catch((error) => console.log(error));
   };
 
 
@@ -103,7 +103,7 @@ export default function UpdateRestaurant(props) {
           onChange={(e) => setAddress(e.target.value)}
         />
 
-<label>Description</label>
+        <label>Description</label>
         <textarea
           type="text"
           cols="70"

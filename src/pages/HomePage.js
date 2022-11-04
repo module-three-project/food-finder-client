@@ -1,7 +1,7 @@
 import logo from '../images/foodfinderlogo.png'
 
-export default function HomePage(){
-    return(
+export default function HomePage() {
+    return (
         <div>
             <h1>Welcome to</h1>
             <img src={logo} alt="logo"></img>

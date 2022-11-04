@@ -27,8 +27,10 @@ export default function AddCity(props) {
                 props.cbToGetCities();
                 navigate("/cities")
             })
-            .catch((error) => { const errorDescription = error.response.data.message;
-                setErrorMessage(errorDescription) })
+            .catch((error) => {
+                const errorDescription = error.response.data.message;
+                setErrorMessage(errorDescription)
+            })
     };
 
     console.log(props)
@@ -36,7 +38,7 @@ export default function AddCity(props) {
 
     return (
         <div className="AddCity">
-        <h2>Add Your City</h2>
+            <h2>Add Your City</h2>
             <form onSubmit={handleSubmit}>
                 <label>City Name:</label>
                 <input
@@ -63,7 +65,7 @@ export default function AddCity(props) {
                 />
                 <button> Submit </button>
             </form>
-            { errorMessage && <p className="error-message">{errorMessage}</p> }
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
     )
 }

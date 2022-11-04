@@ -2,25 +2,25 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import './styles/SignupLogin.css'
- 
+
 const API_URL = "http://localhost:5005";
- 
- 
+
+
 function SignupPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
- 
+
   const navigate = useNavigate();
-  
+
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
- 
-  
+
+
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { email, password};
- 
+    const requestBody = { email, password };
+
 
     axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, requestBody)
       .then((response) => {
@@ -31,39 +31,39 @@ function SignupPage(props) {
         setErrorMessage(errorDescription);
       })
   };
- 
-  
+
+
   return (
     <div className="Signup container" >
       <h1>Sign Up</h1>
- 
+
       <form onSubmit={handleSignupSubmit}>
         <label>Email:</label>
-        <input 
+        <input
           type="email"
           name="email"
           value={email}
           onChange={handleEmail}
         />
- 
+
         <label>Password:</label>
-        <input 
+        <input
           type="password"
           name="password"
           value={password}
           onChange={handlePassword}
         />
 
- 
+
         <button type="submit">Sign Up</button>
       </form>
- 
-      { errorMessage && <p className="error-message">{errorMessage}</p> }
- 
+
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+
       <p>Already have account?</p>
       <Link to={"/login"}> <button>Login </button></Link>
     </div>
   )
 }
- 
+
 export default SignupPage;

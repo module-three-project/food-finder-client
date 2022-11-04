@@ -1,20 +1,18 @@
-.aboutText{
-    max-width: 400px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
+.aboutText {
+  max-width: 400px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 
-    margin: auto;
+  margin: auto;
 }
 
-.AboutPage{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-
+.AboutPage {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.title{
-
-    text-decoration: underline;
+.title {
+  text-decoration: underline;
 }
